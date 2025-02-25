@@ -1,0 +1,53 @@
+const songName = document.getElementById('song-name');
+const bandName = document.getElementById('band-name')
+const song = document.getElementById('audio')
+const cover = document.getElementById('cover')
+const play = document.getElementById('play')
+
+const ChaseWaves = {
+    songName : 'Chase Waves',
+    artist : 'Karneef',
+    file: 'Chase_Waves'
+};
+const SongForBoggy = {
+    songName : 'Song For Boggy',
+    artist : 'Karneef',
+    file: 'song_For_boggy'
+};
+const TyoStoreFunk = {
+    songName : 'Toy Store Funk',
+    artist : 'Karneef',
+    file: 'Toy_store_funk'
+};
+let isPlaying = false;
+const playlist = [ChaseWaves, SongForBoggy, TyoStoreFunk];
+let index = 0;
+
+function playSong(){
+    play.querySelector('.bi').classList.remove('bi-play-circle-fill');
+    play.querySelector('.bi').classList.add('bi-pause-circle-fill');
+    song.play();
+    isPlaying = true;
+}
+
+function pauseSong(){
+    play.querySelector('.bi').classList.add('bi-play-circle-fill');
+    play.querySelector('.bi').classList.remove('bi-pause-circle-fill');
+    song.pause();
+    isPlaying = false;
+}
+
+function playPauseDecider(){
+    if(isPlaying === true){
+        pauseSong();
+    }
+    else{
+        playSong();
+    }
+}
+
+function initializeSong(){
+    
+}
+
+play.addEventListener('click', playPauseDecider);
